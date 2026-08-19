@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Feastcraft with Miri",
+  description = "Fantasy recipes inspired by games, films and legends.",
+} = Astro.props;
+
+const pageTitle = title === "Feastcraft with Miri" ? title : `${title} | Feastcraft with Miri`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#21152f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Feastcraft with Miri home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>
+          <strong>Feastcraft</strong>
+          <small>with Miri</small>
+        </span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="/recipes/">Recipes</a>
+        <a href="/#about">About</a>
+        <a href="https://www.tiktok.com/@feastcraftwithmiri" rel="noreferrer">TikTok</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <p class="footer-brand">Feastcraft with Miri</p>
+        <p>Fantasy recipes, tavern drinks and cooking quests.</p>
+      </div>
+      <p>Made by a lifelong nerd and kitchen adventurer.</p>
+    </footer>
+  </body>
+</html>

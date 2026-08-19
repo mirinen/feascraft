@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RecipeCard from "../../components/RecipeCard.astro";
+
+const recipes = (await getCollection("recipes", ({ data }) => data.published))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fandoms = ["All", ...new Set(recipes.map(({ data }) => data.fandom))];
+---
+
+<BaseLayout title="Recipes" description="Explore original Feastcraft fantasy and gaming recipes.">
+  <section class="page-hero compact">
+    <p class="eyebrow">Choose your next quest</p>
+    <h1>The recipe collection</h1>
+    <p>Original recipes inspired by games, fantasy worlds and food worth gathering around.</p>
+  </section>
+
+  <section class="section collection-section">
+    <div class="filters" aria-label="Filter recipes by fandom">
+      {fandoms.map((fandom, index) => (
+        <button class:list={["filter-button", { active: index === 0 }]} type="button" data-filter={fandom}>{fandom}</button>
+      ))}
+    </div>
+    <div class="recipe-grid" id="recipe-grid">
+      {recipes.map((recipe) => (
+        <div data-fandom={recipe.data.fandom}>
+          <RecipeCard
+            slug={recipe.id}
+            title={recipe.data.title}
+            description={recipe.data.description}
+            fandom={recipe.data.fandom}
+            category={recipe.data.category}
+            image={recipe.data.image}
+          />
+        </div>
+      ))}
+    </div>
+    <p class="empty-state" hidden>No recipes found in this realm yet.</p>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const cards = document.querySelectorAll<HTMLElement>("[data-fandom]");
+    const emptyState = document.querySelector<HTMLElement>(".empty-state");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = filter === "All" || card.dataset.fandom === filter;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        if (emptyState) emptyState.hidden = visible > 0;
+      });
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const recipes = await getCollection("recipes", ({ data }) => data.published);
+  return recipes.map((recipe) => ({ params: { slug: recipe.id }, props: { recipe } }));
+}
+
+const { recipe } = Astro.props;
+const { data } = recipe;
+const instructions = recipe.rendered?.html ?? "";
+---
+
+<BaseLayout title={data.title} description={data.description}>
+  <article class="recipe-page">
+    <a class="back-link" href="/recipes/">← All recipes</a>
+    <header class="recipe-header">
+      <div class="recipe-title-block">
+        <div class="recipe-meta large">
+          <span>{data.fandom}</span>
+          <span>{data.category}</span>
+        </div>
+        <h1>{data.title}</h1>
+        <p>{data.description}</p>
+        <dl class="recipe-facts">
+          {data.prepTime && <div><dt>Prep</dt><dd>{data.prepTime}</dd></div>}
+          {data.cookTime && <div><dt>Cook</dt><dd>{data.cookTime}</dd></div>}
+          {data.servings && <div><dt>Makes</dt><dd>{data.servings}</dd></div>}
+        </dl>
+      </div>
+      <div class="recipe-hero-image">
+        {data.image ? <img src={data.image} alt={data.title} /> : <span aria-hidden="true">✦</span>}
+      </div>
+    </header>
+
+    <div class="recipe-content">
+      <section class="ingredients-card">
+        <p class="eyebrow">Gather your supplies</p>
+        <h2>Ingredients</h2>
+        <ul>
+          {data.ingredients.map((ingredient) => <li>{ingredient}</li>)}
+        </ul>
+      </section>
+      <section class="instructions">
+        <p class="eyebrow">The quest</p>
+        <h2>Instructions</h2>
+        <div class="prose" set:html={instructions} />
+      </section>
+    </div>
+  </article>
+</BaseLayout>

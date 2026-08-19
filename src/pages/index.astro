@@ -1,0 +1,79 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RecipeCard from "../components/RecipeCard.astro";
+
+const recipes = (await getCollection("recipes", ({ data }) => data.published))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featured = recipes.filter(({ data }) => data.featured).slice(0, 3);
+const shownRecipes = featured.length ? featured : recipes.slice(0, 3);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Fantasy food inspired by games, films and legends</p>
+      <h1>Every recipe is a new cooking quest.</h1>
+      <p class="hero-intro">
+        Welcome to Feastcraft, where game nights become banquets, tavern drinks glow a little brighter
+        and recipes are always worth rolling for.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/recipes/">Explore recipes</a>
+        <a class="button secondary" href="#about">Meet Miri</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Decorative enchanted recipe book">
+      <div class="moon"></div>
+      <div class="spark spark-one">✦</div>
+      <div class="spark spark-two">✧</div>
+      <div class="book">
+        <span>FEASTCRAFT</span>
+        <small>Recipes for every realm</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="section recipes-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">From the quest log</p>
+        <h2>Featured recipes</h2>
+      </div>
+      <a class="text-link desktop-link" href="/recipes/">See all recipes <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="recipe-grid">
+      {shownRecipes.map((recipe) => (
+        <RecipeCard
+          slug={recipe.id}
+          title={recipe.data.title}
+          description={recipe.data.description}
+          fandom={recipe.data.fandom}
+          category={recipe.data.category}
+          image={recipe.data.image}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="portrait-placeholder" aria-hidden="true">
+      <span>✦</span>
+      <small>Your photo<br />will go here</small>
+    </div>
+    <div class="about-copy">
+      <p class="eyebrow">Lifelong nerd • creator • kitchen adventurer</p>
+      <h2>Hi, I’m Miri.</h2>
+      <p>
+        Feastcraft began with a love for fantasy worlds, games and the kind of food that looks like it
+        belongs on a tavern table. I’m a lifelong nerd and kitchen adventurer exploring fictional worlds
+        one recipe at a time and sharing what happens along the way.
+      </p>
+      <p>
+        Here you’ll find my original gaming-inspired recipes. My cookbook quests continue on social media,
+        where the victories, experiments and occasional kitchen chaos all make the final cut.
+      </p>
+      <a class="button secondary" href="https://www.tiktok.com/@feastcraftwithmiri" rel="noreferrer">Join the next quest</a>
+    </div>
+  </section>
+</BaseLayout>
