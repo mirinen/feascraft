@@ -381,7 +381,7 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
 .footer-brand { color: var(--gold-light); font-size: 1.5rem; }
 
 .page-hero { padding: 100px max(20px, calc((100vw - 1180px) / 2)); background: linear-gradient(120deg, var(--lavender), #dbe7e1); }
-.page-hero.compact { min-height: 390px; display: flex; flex-direction: column; justify-content: center; }
+.page-hero.compact { min-height: 310px; display: flex; flex-direction: column; justify-content: center; }
 .page-hero h1 { margin-bottom: 20px; font-size: clamp(3.4rem, 7vw, 6rem); }
 .page-hero > p:last-child { max-width: 610px; color: var(--muted); font-size: 1.05rem; }
 .collection-section { padding-top: 60px; }
@@ -458,7 +458,7 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
   .portrait-placeholder { max-width: 390px; }
   .site-footer { flex-direction: column; gap: 20px; }
   .page-hero { padding-top: 70px; padding-bottom: 70px; }
-  .page-hero.compact { min-height: 330px; }
+  .page-hero.compact { min-height: 260px; }
   .recipe-page { width: min(100% - 28px, 1120px); padding-top: 35px; }
   .recipe-header { gap: 40px; }
   .recipe-title-block h1 { font-size: 3.6rem; }
