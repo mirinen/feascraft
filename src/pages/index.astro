@@ -12,25 +12,34 @@ const shownRecipes = featured.length ? featured : recipes.slice(0, 3);
 <BaseLayout>
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">Fantasy food inspired by games, films and legends</p>
-      <h1>Every recipe is a new cooking quest.</h1>
+      <p class="eyebrow hero-eyebrow">Fantasy recipes for real kitchens</p>
+      <h1>
+        <span>Gather<br />around.</span>
+        <em>The feast is<br />ready.</em>
+      </h1>
       <p class="hero-intro">
-        Welcome to Feastcraft, where game nights become banquets, tavern drinks glow a little brighter
-        and recipes are always worth rolling for.
+        Original recipes inspired by games, books and films. Made with a little magic, a lot of
+        enthusiasm and ingredients you can actually find.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="/recipes/">Explore recipes</a>
-        <a class="button secondary" href="#about">Meet Miri</a>
+        <a class="button primary" href="/recipes/">Explore the recipes <span aria-hidden="true">↓</span></a>
+        <a class="hero-text-link" href="#about">Meet Miri <span aria-hidden="true">↗</span></a>
       </div>
     </div>
-    <div class="hero-art" aria-label="Decorative enchanted recipe book">
-      <div class="moon"></div>
-      <div class="spark spark-one">✦</div>
-      <div class="spark spark-two">✧</div>
-      <div class="book">
-        <span>FEASTCRAFT</span>
-        <small>Recipes for every realm</small>
-      </div>
+
+    <div class="hero-notes" aria-label="Miri’s recipe field notes">
+      <article class="field-notes">
+        <p class="eyebrow">Miri’s field notes</p>
+        <h2>Recipes collected<br />from every realm</h2>
+        <div class="notes-rule" aria-hidden="true"></div>
+        <ul>
+          <li><span aria-hidden="true">⚔</span> Boss-level comfort food</li>
+          <li><span aria-hidden="true">✦</span> Tavern drinks &amp; potions</li>
+          <li><span aria-hidden="true">☕</span> Cozy fantasy bakes</li>
+        </ul>
+        <p class="notes-footer">New quests weekly</p>
+        <div class="wax-seal" aria-hidden="true"><span>FC</span></div>
+      </article>
     </div>
   </section>
 
