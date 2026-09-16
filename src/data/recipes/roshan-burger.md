@@ -1,31 +1,37 @@
 ---
-title: Roshan Burger
-description: A massive boss-level cheeseburger with smoky bacon and onion jam, built for The International.
-fandom: Dota 2
+title: Mok'Nathal Shortribs
+description: Slow-braised beef short ribs with baby potatoes in a rich, smoky
+  sauce, inspired by the rugged hunters of Nagrand.
+fandom: World of Warcraft
 category: Main
 prepTime: 20 minutes
-cookTime: 30 minutes
-servings: 2 burgers
+cookTime: 3 hour 30 minutes
+servings: "4"
 date: 2026-08-17
 featured: true
 published: true
 ingredients:
-  - 300 g ground beef
-  - 2 brioche or black burger buns
-  - 4 slices cheddar
-  - Salt and black pepper
-  - Lettuce
-  - 2 tbsp mayonnaise
-  - 2 tbsp BBQ sauce
-  - 4 slices bacon
-  - 1 small onion, thinly sliced
-  - 2 tbsp brown sugar
-  - 1 tbsp balsamic vinegar
+  - 1 kg short ribs
+  - 2 tbsp oil
+  - 1 large onion, diced
+  - 3 garlic cloves, minced
+  - 3 dl beef stock
+  - 1 tbsp brown sugar
+  - 1 tbsp Worcestershire sauce
+  - 1 tsp smoked paprika
+  - 1 tsp black pepper
+  - 1 tsp salt
+  - 1 sprig rosemary (or 1 tsp dried)
+  - 500 g baby potatoes
 ---
+1. Preheat oven to 160°C.
+2. Season the beef generously with salt, pepper, and smoked paprika.
+3. Heat oil in a Dutch oven or oven-safe pot and brown the meat on all sides.
+4. Add onion and garlic, cooking until softened.
+5. Stir in tomato paste and brown sugar.
+6. Pour in beef stock and Worcestershire sauce.
+7. Add rosemary and bring to a gentle simmer.
+8. Cover and transfer to the oven for 3–3.5 hours.
+9. After 2 hours, add the potatoes around the meat.
+10. Continue cooking until the meat is fork-tender and the sauce has reduced.
 
-1. Start with the bacon and onion jam. Chop the bacon and fry until crisp. Lift it from the pan, leaving a little of the fat behind.
-2. Add the sliced onion and cook over medium-low heat until soft and golden. Stir in the brown sugar and balsamic vinegar, then return the bacon to the pan. Cook until sticky and glossy.
-3. Divide the beef into two large patties. Season well with salt and black pepper.
-4. Cook the patties in a hot pan, turning once. Add two slices of cheddar to each patty near the end and cover briefly so the cheese melts.
-5. Toast the buns. Spread the bottom halves with mayonnaise, then add lettuce, the cheeseburger patties, bacon and onion jam and BBQ sauce.
-6. Close the burgers and serve with enough napkins for a boss fight.
