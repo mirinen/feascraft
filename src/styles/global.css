@@ -379,6 +379,8 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
 .site-footer { display: flex; justify-content: space-between; gap: 50px; padding: 55px max(20px, calc((100vw - 1180px) / 2)); background: #160f20; color: #bfb1c4; font-size: 0.82rem; }
 .site-footer p { margin-bottom: 4px; }
 .footer-brand { color: var(--gold-light); font-size: 1.5rem; }
+.footer-email { color: var(--gold-light); text-underline-offset: 4px; }
+.footer-email:hover, .footer-email:focus-visible { color: var(--paper); }
 
 .page-hero { padding: 100px max(20px, calc((100vw - 1180px) / 2)); background: linear-gradient(120deg, var(--lavender), #dbe7e1); }
 .page-hero.compact { min-height: 310px; display: flex; flex-direction: column; justify-content: center; }
