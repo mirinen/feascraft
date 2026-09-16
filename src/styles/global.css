@@ -370,7 +370,7 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
 .about-section { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: clamp(55px, 8vw, 105px); align-items: center; padding: 110px max(20px, calc((100vw - 1060px) / 2)); background: var(--ink); color: var(--paper); }
 .about-portrait-frame { position: relative; width: 260px; justify-self: center; }
 .about-portrait-frame::before { content: ""; position: absolute; inset: 12px -12px -12px 12px; border: 1px solid rgba(216, 168, 77, 0.48); }
-.about-portrait { position: relative; width: 100%; aspect-ratio: 4 / 5; border: 1px solid rgba(240, 213, 141, 0.35); object-fit: cover; }
+.about-portrait { position: relative; width: 100%; height: auto; aspect-ratio: 4 / 5; border: 1px solid rgba(240, 213, 141, 0.35); object-fit: cover; }
 .about-copy .eyebrow { color: var(--gold-light); }
 .about-copy h2 { margin-bottom: 28px; }
 .about-copy p { max-width: 680px; color: #ddd2df; }
