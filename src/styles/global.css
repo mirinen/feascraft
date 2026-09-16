@@ -368,9 +368,7 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
 .recipe-card p { min-height: 76px; color: var(--muted); font-size: 0.92rem; }
 
 .about-section { display: grid; grid-template-columns: minmax(280px, 0.8fr) 1.2fr; gap: clamp(50px, 8vw, 110px); align-items: center; padding: 110px max(20px, calc((100vw - 1080px) / 2)); background: var(--ink); color: var(--paper); }
-.portrait-placeholder { display: grid; aspect-ratio: 4 / 5; place-items: center; border: 1px solid rgba(240, 213, 141, 0.35); background: radial-gradient(circle at top, #684475, #174f52 70%); color: var(--gold-light); text-align: center; }
-.portrait-placeholder span { font-size: 4rem; }
-.portrait-placeholder small { position: absolute; opacity: 0.72; transform: translateY(55px); text-transform: uppercase; letter-spacing: 0.13em; }
+.about-portrait { width: 100%; aspect-ratio: 4 / 5; border: 1px solid rgba(240, 213, 141, 0.35); object-fit: cover; }
 .about-copy .eyebrow { color: var(--gold-light); }
 .about-copy h2 { margin-bottom: 28px; }
 .about-copy p { max-width: 680px; color: #ddd2df; }
@@ -455,7 +453,7 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
   .recipe-grid { grid-template-columns: 1fr; }
   .recipe-card p { min-height: 0; }
   .about-section { grid-template-columns: 1fr; padding: 75px 20px; }
-  .portrait-placeholder { max-width: 390px; }
+  .about-portrait { max-width: 390px; }
   .site-footer { flex-direction: column; gap: 20px; }
   .page-hero { padding-top: 70px; padding-bottom: 70px; }
   .page-hero.compact { min-height: 260px; }
