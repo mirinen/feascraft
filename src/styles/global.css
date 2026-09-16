@@ -367,8 +367,10 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
 .recipe-card h3 a { text-decoration: none; }
 .recipe-card p { min-height: 76px; color: var(--muted); font-size: 0.92rem; }
 
-.about-section { display: grid; grid-template-columns: minmax(280px, 0.8fr) 1.2fr; gap: clamp(50px, 8vw, 110px); align-items: center; padding: 110px max(20px, calc((100vw - 1080px) / 2)); background: var(--ink); color: var(--paper); }
-.about-portrait { width: 100%; aspect-ratio: 4 / 5; border: 1px solid rgba(240, 213, 141, 0.35); object-fit: cover; }
+.about-section { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: clamp(55px, 8vw, 105px); align-items: center; padding: 110px max(20px, calc((100vw - 1060px) / 2)); background: var(--ink); color: var(--paper); }
+.about-portrait-frame { position: relative; width: 260px; justify-self: center; }
+.about-portrait-frame::before { content: ""; position: absolute; inset: 12px -12px -12px 12px; border: 1px solid rgba(216, 168, 77, 0.48); }
+.about-portrait { position: relative; width: 100%; aspect-ratio: 4 / 5; border: 1px solid rgba(240, 213, 141, 0.35); object-fit: cover; }
 .about-copy .eyebrow { color: var(--gold-light); }
 .about-copy h2 { margin-bottom: 28px; }
 .about-copy p { max-width: 680px; color: #ddd2df; }
@@ -416,7 +418,8 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
   .hero-copy { width: min(720px, calc(100% - 40px)); margin: 0 auto; padding: 80px 0; }
   .hero-notes { min-height: 680px; }
   .recipe-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-section { grid-template-columns: 0.8fr 1.2fr; gap: 45px; }
+  .about-section { grid-template-columns: 240px minmax(0, 1fr); gap: 45px; }
+  .about-portrait-frame { width: 210px; }
   .recipe-header, .recipe-content { grid-template-columns: 1fr; }
   .recipe-hero-image { max-height: 620px; }
   .recipe-content { gap: 45px; }
@@ -452,8 +455,8 @@ nav a:hover, nav a:focus-visible { color: var(--teal-light); }
   .desktop-link { display: none; }
   .recipe-grid { grid-template-columns: 1fr; }
   .recipe-card p { min-height: 0; }
-  .about-section { grid-template-columns: 1fr; padding: 75px 20px; }
-  .about-portrait { max-width: 390px; }
+  .about-section { grid-template-columns: 1fr; gap: 54px; padding: 75px 20px; }
+  .about-portrait-frame { width: 190px; }
   .site-footer { flex-direction: column; gap: 20px; }
   .page-hero { padding-top: 70px; padding-bottom: 70px; }
   .page-hero.compact { min-height: 260px; }
