@@ -3,23 +3,16 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RecipeCard from "../components/RecipeCard.astro";
 
-const recipes = (await getCollection("recipes", ({ data }) => data.published))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const logPosts = await getCollection("cookingLog", ({ data }) => data.published);
-const latestEntries = [
-  ...logPosts.map((post) => ({
+const latestEntries = logPosts
+  .map((post) => ({
     slug: post.id,
     ...post.data,
     href: `/cooking-log/${post.id}/`,
     linkLabel: "Read the cooking log",
-  })),
-  ...recipes.map((recipe) => ({
-    slug: recipe.id,
-    ...recipe.data,
-    href: `/recipes/${recipe.id}/`,
-    linkLabel: "View full recipe",
-  })),
-].sort((a, b) => b.date.valueOf() - a.date.valueOf()).slice(0, 3);
+  }))
+  .sort((a, b) => b.date.valueOf() - a.date.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout>
@@ -60,7 +53,7 @@ const latestEntries = [
       </div>
       <a class="text-link desktop-link" href="/cooking-log/">View the cooking log <span aria-hidden="true">→</span></a>
     </div>
-    <div class="recipe-grid">
+    <div class:list={["recipe-grid", { "two-up": latestEntries.length === 2 }]}>
       {latestEntries.map((entry) => (
         <RecipeCard
           slug={entry.slug}
@@ -79,7 +72,7 @@ const latestEntries = [
   <section class="shop-teaser">
     <div>
       <p class="eyebrow">Miri’s bookshelf</p>
-      <h2>The cookbooks I actually use</h2>
+      <h2>The cookbooks I use</h2>
       <p>I get asked about the books a lot, so I put them all in one place.</p>
       <p class="affiliate-note">Affiliate links: Amazon. As an Amazon Associate I earn from qualifying purchases.</p>
     </div>
