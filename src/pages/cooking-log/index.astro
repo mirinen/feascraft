@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RecipeCard from "../../components/RecipeCard.astro";
+
+const posts = await getCollection("cookingLog", ({ data }) => data.published);
+const recipes = await getCollection("recipes", ({ data }) => data.published);
+
+const entries = [
+  ...posts.map((post) => ({
+    slug: post.id,
+    ...post.data,
+    href: `/cooking-log/${post.id}/`,
+    linkLabel: "Read the cooking log",
+  })),
+  ...recipes.map((recipe) => ({
+    slug: recipe.id,
+    ...recipe.data,
+    href: `/recipes/${recipe.id}/`,
+    linkLabel: "View full recipe",
+  })),
+].sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+const fandoms = ["All", ...new Set(entries.map((entry) => entry.fandom))];
+---
+
+<BaseLayout title="Cooking Log" description="Everything cooked in the Feastcraft kitchen, from cookbook dishes to original recipes.">
+  <section class="page-hero compact">
+    <p class="eyebrow">From the Feastcraft kitchen</p>
+    <h1>Cooking log</h1>
+    <p>Everything I have cooked from fictional worlds, including cookbook dishes and my own recipes.</p>
+  </section>
+
+  <section class="section collection-section">
+    <div class="log-explainer">
+      <p><strong>Cookbook dish</strong> posts include what I changed and what I thought, but not the full published recipe.</p>
+      <p><strong>Original recipe</strong> posts include the complete ingredients and instructions.</p>
+    </div>
+
+    <div class="filters" aria-label="Filter cooking log by fandom">
+      {fandoms.map((fandom, index) => (
+        <button class:list={["filter-button", { active: index === 0 }]} type="button" data-filter={fandom}>{fandom}</button>
+      ))}
+    </div>
+
+    <div class="recipe-grid" id="cooking-log-grid">
+      {entries.map((entry) => (
+        <div data-fandom={entry.fandom}>
+          <RecipeCard
+            slug={entry.slug}
+            title={entry.title}
+            description={entry.description}
+            fandom={entry.fandom}
+            category={entry.category}
+            image={entry.image}
+            href={entry.href}
+            linkLabel={entry.linkLabel}
+          />
+        </div>
+      ))}
+    </div>
+    <p class="empty-state" hidden>No dishes found in this realm yet.</p>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const cards = document.querySelectorAll<HTMLElement>("[data-fandom]");
+    const emptyState = document.querySelector<HTMLElement>(".empty-state");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = filter === "All" || card.dataset.fandom === filter;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        if (emptyState) emptyState.hidden = visible > 0;
+      });
+    });
+  </script>
+</BaseLayout>
