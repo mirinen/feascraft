@@ -319,6 +319,41 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
 .about-copy p { max-width: 680px; color: #dacdc4; font-size: 1.02rem; }
 .about-copy .button { margin-top: 15px; border-color: var(--gold); color: var(--gold-light); }
 
+.shop-teaser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 55px;
+  padding: 78px max(20px, calc((100vw - 1180px) / 2));
+  border-top: 1px solid rgba(112, 73, 38, 0.22);
+  background: #e5d4b9;
+}
+.shop-teaser h2 { max-width: 650px; margin-bottom: 14px; font-size: clamp(2.6rem, 4.5vw, 4rem); }
+.shop-teaser > div > p:not(.eyebrow):not(.affiliate-note) { margin-bottom: 8px; color: var(--muted); }
+.shop-teaser-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; flex: 0 0 auto; }
+.shop-storefront-link { font-size: 0.84rem; }
+.affiliate-note { max-width: 720px; margin: 10px 0 0; color: #6c5546; font-size: 0.75rem; line-height: 1.5; }
+
+.shop-hero .shop-disclosure { margin-top: 18px; color: #6c5546; font-size: 0.78rem; }
+.shop-page { padding-top: 75px; }
+.book-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.book-card { display: grid; grid-template-columns: minmax(190px, 0.75fr) minmax(0, 1.25fr); min-height: 430px; overflow: hidden; border: 1px solid rgba(112, 73, 38, 0.32); background: var(--paper); box-shadow: 0 15px 38px rgba(58, 31, 19, 0.11); }
+.book-cover { display: flex; flex-direction: column; justify-content: flex-end; min-height: 430px; padding: 30px 24px; color: var(--gold-light); }
+.book-cover span { margin-bottom: 12px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.book-cover strong { font-family: "Cormorant Garamond", serif; font-size: 2rem; line-height: 1.02; }
+.book-wow { background: radial-gradient(circle at 70% 20%, rgba(211,159,69,0.35), transparent 22%), linear-gradient(145deg, #17433d, #1c1825 72%); }
+.book-tolkien { background: radial-gradient(circle at 30% 22%, rgba(224,182,95,0.28), transparent 22%), linear-gradient(145deg, #76502e, #2d201b 75%); }
+.book-card-copy { align-self: center; padding: 38px; }
+.book-card-copy h2 { margin-bottom: 12px; font-size: clamp(2rem, 3vw, 3rem); }
+.book-card-copy > p:not(.eyebrow):not(.affiliate-label) { color: var(--muted); }
+.affiliate-label { margin: 24px 0 10px; color: #765233; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; }
+.book-card .button { margin-top: 6px; }
+.storefront-callout { display: flex; align-items: center; justify-content: space-between; gap: 50px; margin-top: 45px; padding: 45px 50px; border: 1px solid rgba(216,168,77,0.35); background: var(--ink); color: var(--paper); }
+.storefront-callout h2 { margin-bottom: 12px; font-size: clamp(2.4rem, 4vw, 3.7rem); }
+.storefront-callout p:not(.eyebrow):not(.affiliate-label) { margin-bottom: 0; color: #dacdc4; }
+.storefront-callout .eyebrow, .storefront-callout .affiliate-label { color: var(--gold-light); }
+.storefront-callout .button { flex: 0 0 auto; border-color: var(--gold); color: var(--gold-light); }
+
 .site-footer { display: flex; justify-content: space-between; gap: 50px; padding: 48px max(20px, calc((100vw - 1180px) / 2)); border-top: 1px solid rgba(236, 209, 141, 0.15); background: #130d10; color: #bfaea4; font-size: 0.82rem; }
 .site-footer p { margin-bottom: 4px; }
 .footer-brand { color: var(--gold-light); font-size: 1.5rem; }
@@ -369,6 +404,9 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
   .recipe-header, .recipe-content { grid-template-columns: 1fr; }
   .recipe-hero-image { max-height: 620px; }
   .recipe-content { gap: 45px; }
+  .shop-teaser { align-items: flex-start; }
+  .book-card { grid-template-columns: 1fr; }
+  .book-cover { min-height: 330px; }
 }
 
 @media (max-width: 640px) {
@@ -393,6 +431,10 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
   .about-section { grid-template-columns: 1fr; gap: 54px; padding: 75px 20px; }
   .about-portrait-frame { width: 190px; }
   .site-footer { flex-direction: column; gap: 20px; }
+  .shop-teaser { flex-direction: column; gap: 30px; padding-top: 62px; padding-bottom: 62px; }
+  .book-grid { grid-template-columns: 1fr; }
+  .book-card-copy { padding: 32px 27px 36px; }
+  .storefront-callout { align-items: flex-start; flex-direction: column; padding: 35px 28px; }
   .page-hero { padding-top: 70px; padding-bottom: 70px; }
   .page-hero.compact { min-height: 260px; }
   .recipe-page { width: min(100% - 28px, 1120px); padding-top: 35px; }
