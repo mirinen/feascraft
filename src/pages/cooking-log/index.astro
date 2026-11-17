@@ -25,10 +25,6 @@ const fandoms = ["All", ...new Set(entries.map((entry) => entry.fandom))];
   </section>
 
   <section class="section collection-section">
-    <div class="log-explainer single">
-      <p>These posts do not include the full published recipe. You will find my substitutions, notes and honest opinion instead.</p>
-    </div>
-
     <div class="filters" aria-label="Filter cooking log by fandom">
       {fandoms.map((fandom, index) => (
         <button class:list={["filter-button", { active: index === 0 }]} type="button" data-filter={fandom}>{fandom}</button>
