@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const storefrontUrl = "https://www.amazon.co.uk/shop/feastcraftwithmiri?linkCode=gg3&creatorsDisableRedirect=true&ar_su=https://a.co/d/0bSE5pmT&ar_mt=STATIC_URL_PAGE";
+
+const books = [
+  {
+    title: "World of Warcraft: The Official Cookbook",
+    author: "Chelsea Monroe-Cassel",
+    world: "Azeroth",
+    className: "book-wow",
+    url: "https://www.amazon.co.uk/dp/160887804X?linkCode=gg3&tag=hannekaulimo-20&creativeASIN=160887804X&asc_item-id=amzn1.ideas.ET33GH98OWE4&ref_=aip_sf_list_spv_ofs_mixed_d_asin&th=1",
+  },
+  {
+    title: "Recipes from the World of Tolkien",
+    author: "Robert Tuesley Anderson",
+    world: "Middle-earth",
+    className: "book-tolkien",
+    url: "https://www.amazon.co.uk/dp/1645174425?linkCode=gg3&tag=hannekaulimo-20&creativeASIN=1645174425&asc_item-id=amzn1.ideas.ET33GH98OWE4&ref_=aip_sf_list_spv_ofs_mixed_d_asin&th=1",
+  },
+];
+---
+
+<BaseLayout
+  title="Shop"
+  description="The fantasy cookbooks and kitchen favourites used for Feastcraft with Miri."
+>
+  <section class="page-hero compact shop-hero">
+    <p class="eyebrow">Miri’s bookshelf</p>
+    <h1>The books behind Feastcraft</h1>
+    <p>These are the cookbooks I use for the recipes you see on Feastcraft.</p>
+    <p class="affiliate-note shop-disclosure">
+      Mainoslinkit: Amazon. As an Amazon Associate I earn from qualifying purchases.
+    </p>
+  </section>
+
+  <section class="section shop-page">
+    <div class="book-grid">
+      {books.map((book) => (
+        <article class="book-card">
+          <div class={`book-cover ${book.className}`} aria-hidden="true">
+            <span>{book.world}</span>
+            <strong>{book.title}</strong>
+          </div>
+          <div class="book-card-copy">
+            <p class="eyebrow">{book.world}</p>
+            <h2>{book.title}</h2>
+            <p>by {book.author}</p>
+            <p class="affiliate-label">Mainoslinkki: Amazon</p>
+            <a class="button primary" href={book.url} rel="sponsored noreferrer">View on Amazon UK</a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <aside class="storefront-callout">
+      <div>
+        <p class="eyebrow">Everything in one place</p>
+        <h2>My Amazon storefront</h2>
+        <p>The cookbooks and other things I recommend are collected on my storefront.</p>
+        <p class="affiliate-label">Mainoslinkki: Amazon</p>
+      </div>
+      <a class="button secondary" href={storefrontUrl} rel="sponsored noreferrer">Open the storefront</a>
+    </aside>
+  </section>
+</BaseLayout>
