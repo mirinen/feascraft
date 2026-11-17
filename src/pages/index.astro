@@ -12,47 +12,44 @@ const shownRecipes = featured.length ? featured : recipes.slice(0, 3);
 <BaseLayout>
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow hero-eyebrow">Fantasy recipes for ordinary kitchens</p>
+      <p class="eyebrow hero-eyebrow">Welcome to the tavern</p>
       <h1>
-        <span>Gather<br />around.</span>
-        <em>The feast is<br />ready.</em>
+        <span>Pull up<br />a chair.</span>
+        <em>Something is<br />cooking.</em>
       </h1>
       <p class="hero-intro">
-        Original recipes inspired by games, books and films. Made with a little magic, a lot of
-        enthusiasm and ingredients you can actually find.
+        Fantasy food from Azeroth and beyond — original recipes, cookbook quests and tavern drinks
+        made in a very ordinary Finnish kitchen.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="/recipes/">Explore the recipes <span aria-hidden="true">↓</span></a>
+        <a class="button primary" href="/recipes/">Browse the menu <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
-    <div class="hero-notes" aria-label="Miri’s recipe field notes">
-      <article class="field-notes">
-        <p class="eyebrow">Miri’s field notes</p>
-        <h2>Recipes collected<br />from every realm</h2>
-        <div class="notes-rule" aria-hidden="true"></div>
-        <ul>
-          <li><span aria-hidden="true">⚔</span> Boss-level comfort food</li>
-          <li><span aria-hidden="true">✦</span> Tavern drinks &amp; potions</li>
-          <li><span aria-hidden="true">☕</span> Cozy fantasy bakes</li>
-        </ul>
-        <p class="notes-footer">New quests weekly</p>
-        <div class="wax-seal" aria-hidden="true"><span>FC</span></div>
-      </article>
+    <div class="tavern-scene" aria-hidden="true">
+      <div class="window-stars"><span>✦</span><span>✧</span><span>✦</span></div>
+      <div class="tavern-window">
+        <div class="moon"></div>
+        <div class="window-glow"></div>
+      </div>
+      <div class="tavern-sign">
+        <span class="sign-ornament">✦</span>
+        <strong>Feastcraft</strong>
+        <small>with Miri</small>
+      </div>
+      <div class="tabletop"></div>
+      <div class="candle candle-left"><span class="flame"></span></div>
+      <div class="candle candle-right"><span class="flame"></span></div>
     </div>
   </section>
 
   <section class="section recipes-section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">From the quest log</p>
-        <h2>Featured recipes</h2>
-        <p class="recipes-manifesto">
-          Tested in a very ordinary kitchen.<br />
-          Inspired by decidedly extraordinary worlds.
-        </p>
+        <p class="eyebrow">Tonight’s specials</p>
+        <h2>From the tavern kitchen</h2>
       </div>
-      <a class="text-link desktop-link" href="/recipes/">See all recipes <span aria-hidden="true">→</span></a>
+      <a class="text-link desktop-link" href="/recipes/">View the full menu <span aria-hidden="true">→</span></a>
     </div>
     <div class="recipe-grid">
       {shownRecipes.map((recipe) => (
@@ -80,22 +77,14 @@ const shownRecipes = featured.length ? featured : recipes.slice(0, 3);
       />
     </div>
     <div class="about-copy">
-      <p class="eyebrow">Behind the feast</p>
+      <p class="eyebrow">Your tavern keeper</p>
       <h2>Hi, I’m Miri.</h2>
       <p>
-        I’m not a chef or a trained cook. I’m a lifelong nerd from Finland, and I turn food from my
-        favourite fantasy worlds into something you can make at home.
+        I’m a lifelong nerd from Finland, cooking my way through Azeroth and every other fictional
+        world that makes me hungry. Feastcraft began with the World of Warcraft cookbook and grew into
+        cookbook quests, original recipes and the occasional bit of kitchen chaos.
       </p>
-      <p>
-        Feastcraft began as a quest to cook through the World of Warcraft cookbook. Somewhere between
-        the tavern drinks, suspicious stews and boss-level burgers, my cookbook collection exploded, and
-        Feastcraft became a home for food from every fictional world I love.
-      </p>
-      <p>
-        Here I share both my cookbook quests and my own interpretations of dishes found in or inspired by
-        games, books and films, along with the experiments, successes and occasional kitchen chaos.
-      </p>
-      <a class="button secondary" href="https://www.tiktok.com/@feastcraftwithmiri" rel="noreferrer">Join the next quest</a>
+      <a class="button secondary" href="https://www.tiktok.com/@feastcraftwithmiri" rel="noreferrer">Find me on TikTok</a>
     </div>
   </section>
 </BaseLayout>
