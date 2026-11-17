@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("cookingLog", ({ data }) => data.published);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const body = post.rendered?.html ?? "";
+const formattedDate = data.date.toLocaleDateString("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<BaseLayout title={data.title} description={data.description}>
+  <article class="log-page">
+    <a class="back-link" href="/cooking-log/">← Cooking log</a>
+    <header class="log-header">
+      <div class="recipe-meta large">
+        <span>{data.fandom}</span>
+        <span>{data.category}</span>
+      </div>
+      <h1>{data.title}</h1>
+      <p class="log-intro">{data.description}</p>
+      <p class="log-date">Cooked on {formattedDate}</p>
+    </header>
+
+    <div class="log-layout">
+      <div class="log-hero-image">
+        {data.image ? <img src={data.image} alt={data.title} /> : <span aria-hidden="true">✦</span>}
+      </div>
+
+      <div class="log-body">
+        {data.cookbook && (
+          <aside class="source-card">
+            <p class="eyebrow">From the bookshelf</p>
+            <h2>{data.cookbook}</h2>
+            <p>This post is about my experience making the dish. The full recipe belongs to the cookbook.</p>
+            {data.cookbookUrl && (
+              <>
+                <p class="affiliate-label">Affiliate link: Amazon</p>
+                <a class="button primary" href={data.cookbookUrl} rel="sponsored noreferrer">View the cookbook</a>
+              </>
+            )}
+          </aside>
+        )}
+
+        <div class="prose log-prose" set:html={body} />
+
+        {data.videoUrl && (
+          <a class="button secondary log-video-link" href={data.videoUrl} rel="noreferrer">Watch the video</a>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>
