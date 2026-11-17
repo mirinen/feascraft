@@ -20,4 +20,20 @@ const recipes = defineCollection({
   }),
 });
 
-export const collections = { recipes };
+const cookingLog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/cooking-log" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    fandom: z.string(),
+    category: z.string(),
+    image: z.string().optional(),
+    date: z.coerce.date(),
+    published: z.boolean().default(false),
+    cookbook: z.string().optional(),
+    cookbookUrl: z.url().optional(),
+    videoUrl: z.url().optional(),
+  }),
+});
+
+export const collections = { recipes, cookingLog };
