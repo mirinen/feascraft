@@ -8,11 +8,11 @@ const recipes = (await getCollection("recipes", ({ data }) => data.published))
 const fandoms = ["All", ...new Set(recipes.map(({ data }) => data.fandom))];
 ---
 
-<BaseLayout title="Recipes" description="Explore original Feastcraft fantasy and gaming recipes.">
+<BaseLayout title="Original Recipes" description="Original fantasy and gaming recipes created by Feastcraft with Miri.">
   <section class="page-hero compact">
-    <p class="eyebrow">Choose your next quest</p>
-    <h1>The recipe collection</h1>
-
+    <p class="eyebrow">Made by Miri</p>
+    <h1>Original recipes</h1>
+    <p>My own recipes, with the full ingredients and instructions.</p>
   </section>
 
   <section class="section collection-section">
