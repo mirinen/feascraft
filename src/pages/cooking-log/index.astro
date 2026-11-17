@@ -4,37 +4,29 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import RecipeCard from "../../components/RecipeCard.astro";
 
 const posts = await getCollection("cookingLog", ({ data }) => data.published);
-const recipes = await getCollection("recipes", ({ data }) => data.published);
 
-const entries = [
-  ...posts.map((post) => ({
+const entries = posts
+  .map((post) => ({
     slug: post.id,
     ...post.data,
     href: `/cooking-log/${post.id}/`,
     linkLabel: "Read the cooking log",
-  })),
-  ...recipes.map((recipe) => ({
-    slug: recipe.id,
-    ...recipe.data,
-    href: `/recipes/${recipe.id}/`,
-    linkLabel: "View full recipe",
-  })),
-].sort((a, b) => b.date.valueOf() - a.date.valueOf());
+  }))
+  .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
 const fandoms = ["All", ...new Set(entries.map((entry) => entry.fandom))];
 ---
 
-<BaseLayout title="Cooking Log" description="Everything cooked in the Feastcraft kitchen, from cookbook dishes to original recipes.">
+<BaseLayout title="Cooking Log" description="Cookbook dishes and cooking notes from the Feastcraft kitchen.">
   <section class="page-hero compact">
     <p class="eyebrow">From the Feastcraft kitchen</p>
     <h1>Cooking log</h1>
-    <p>Everything I have cooked from fictional worlds, including cookbook dishes and my own recipes.</p>
+    <p>The cookbook dishes I have made, what I changed and what I thought of them.</p>
   </section>
 
   <section class="section collection-section">
-    <div class="log-explainer">
-      <p><strong>Cookbook dish</strong> posts include what I changed and what I thought, but not the full published recipe.</p>
-      <p><strong>Original recipe</strong> posts include the complete ingredients and instructions.</p>
+    <div class="log-explainer single">
+      <p>These posts do not include the full published recipe. You will find my substitutions, notes and honest opinion instead.</p>
     </div>
 
     <div class="filters" aria-label="Filter cooking log by fandom">
