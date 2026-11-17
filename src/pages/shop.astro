@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const storefrontUrl = "https://www.amazon.co.uk/shop/feastcraftwithmiri?linkCode=gg3&creatorsDisableRedirect=true&ar_su=https://a.co/d/0bSE5pmT&ar_mt=STATIC_URL_PAGE";
+const storefrontUrl = "https://www.amazon.com/shop/feastcraftwithmiri?creatorsDisableRedirect=true&ccs_id=16fdd082-8fe6-4826-8d52-733c35f153f8";
 
 const books = [
   {
@@ -9,14 +9,14 @@ const books = [
     author: "Chelsea Monroe-Cassel",
     world: "Azeroth",
     className: "book-wow",
-    url: "https://www.amazon.co.uk/dp/160887804X?linkCode=gg3&tag=hannekaulimo-20&creativeASIN=160887804X&asc_item-id=amzn1.ideas.ET33GH98OWE4&ref_=aip_sf_list_spv_ofs_mixed_d_asin&th=1",
+    url: "https://www.amazon.com/dp/160887804X?linkCode=ssc&tag=hannekaulimo-20&creativeASIN=160887804X&asc_item-id=amzn1.ideas.ET33GH98OWE4&ref_=aip_sf_list_spv_ofs_d_asin&th=1",
   },
   {
     title: "Recipes from the World of Tolkien",
     author: "Robert Tuesley Anderson",
     world: "Middle-earth",
     className: "book-tolkien",
-    url: "https://www.amazon.co.uk/dp/1645174425?linkCode=gg3&tag=hannekaulimo-20&creativeASIN=1645174425&asc_item-id=amzn1.ideas.ET33GH98OWE4&ref_=aip_sf_list_spv_ofs_mixed_d_asin&th=1",
+    url: "https://www.amazon.com/dp/1645174425?linkCode=ssc&tag=hannekaulimo-20&creativeASIN=1645174425&asc_item-id=amzn1.ideas.ET33GH98OWE4&ref_=aip_sf_list_spv_ofs_d_asin&th=1",
   },
 ];
 ---
@@ -47,7 +47,7 @@ const books = [
             <h2>{book.title}</h2>
             <p>by {book.author}</p>
             <p class="affiliate-label">Affiliate link: Amazon</p>
-            <a class="button primary" href={book.url} rel="sponsored noreferrer">View on Amazon UK</a>
+            <a class="button primary" href={book.url} rel="sponsored noreferrer">View on Amazon</a>
           </div>
         </article>
       ))}
