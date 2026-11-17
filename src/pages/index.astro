@@ -5,8 +5,21 @@ import RecipeCard from "../components/RecipeCard.astro";
 
 const recipes = (await getCollection("recipes", ({ data }) => data.published))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const featured = recipes.filter(({ data }) => data.featured).slice(0, 3);
-const shownRecipes = featured.length ? featured : recipes.slice(0, 3);
+const logPosts = await getCollection("cookingLog", ({ data }) => data.published);
+const latestEntries = [
+  ...logPosts.map((post) => ({
+    slug: post.id,
+    ...post.data,
+    href: `/cooking-log/${post.id}/`,
+    linkLabel: "Read the cooking log",
+  })),
+  ...recipes.map((recipe) => ({
+    slug: recipe.id,
+    ...recipe.data,
+    href: `/recipes/${recipe.id}/`,
+    linkLabel: "View full recipe",
+  })),
+].sort((a, b) => b.date.valueOf() - a.date.valueOf()).slice(0, 3);
 ---
 
 <BaseLayout>
@@ -23,7 +36,7 @@ const shownRecipes = featured.length ? featured : recipes.slice(0, 3);
         ordinary Finnish kitchen.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="/recipes/">Browse the menu <span aria-hidden="true">→</span></a>
+        <a class="button primary" href="/cooking-log/">Browse the cooking log <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -42,20 +55,22 @@ const shownRecipes = featured.length ? featured : recipes.slice(0, 3);
   <section class="section recipes-section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Tonight’s specials</p>
-        <h2>From the tavern kitchen</h2>
+        <p class="eyebrow">Latest from the kitchen</p>
+        <h2>What I have been cooking</h2>
       </div>
-      <a class="text-link desktop-link" href="/recipes/">View the full menu <span aria-hidden="true">→</span></a>
+      <a class="text-link desktop-link" href="/cooking-log/">View the cooking log <span aria-hidden="true">→</span></a>
     </div>
     <div class="recipe-grid">
-      {shownRecipes.map((recipe) => (
+      {latestEntries.map((entry) => (
         <RecipeCard
-          slug={recipe.id}
-          title={recipe.data.title}
-          description={recipe.data.description}
-          fandom={recipe.data.fandom}
-          category={recipe.data.category}
-          image={recipe.data.image}
+          slug={entry.slug}
+          title={entry.title}
+          description={entry.description}
+          fandom={entry.fandom}
+          category={entry.category}
+          image={entry.image}
+          href={entry.href}
+          linkLabel={entry.linkLabel}
         />
       ))}
     </div>
