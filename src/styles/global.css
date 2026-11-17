@@ -298,6 +298,7 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
 .text-link:hover { text-decoration: underline; text-underline-offset: 5px; }
 
 .recipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.recipe-grid.two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .recipe-card { position: relative; height: 100%; overflow: hidden; border: 1px solid rgba(112, 73, 38, 0.35); border-radius: 2px; background: var(--paper); box-shadow: 0 12px 30px rgba(58, 31, 19, 0.11); }
 .recipe-card::after { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(157, 111, 53, 0.18); pointer-events: none; }
 .recipe-image { display: grid; aspect-ratio: 4 / 3; place-items: center; overflow: hidden; background: radial-gradient(circle at 50% 30%, #70505f, var(--plum) 45%, #27202b); color: var(--gold-light); font-size: 3rem; text-decoration: none; }
@@ -370,6 +371,7 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
 .filter-button:hover, .filter-button.active { border-color: var(--teal); background: var(--teal); color: white; }
 .empty-state { padding: 60px 0; text-align: center; color: var(--muted); }
 .log-explainer { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 38px; }
+.log-explainer.single { grid-template-columns: minmax(0, 760px); }
 .log-explainer p { margin: 0; padding: 20px 22px; border-left: 3px solid var(--gold); background: rgba(255, 248, 234, 0.58); color: var(--muted); }
 .log-explainer strong { color: var(--ink); }
 
@@ -417,6 +419,7 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
   .hero-copy { width: min(720px, 100%); min-height: 0; margin: 0 auto; padding: 80px 0 60px; }
   .hero-collage-placeholder { width: min(520px, 100%); justify-self: center; margin-bottom: 80px; }
   .recipe-grid { grid-template-columns: repeat(2, 1fr); }
+  .recipe-grid.two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .about-section { grid-template-columns: 240px minmax(0, 1fr); gap: 45px; }
   .about-portrait-frame { width: 210px; }
   .recipe-header, .recipe-content, .log-layout { grid-template-columns: 1fr; }
@@ -446,6 +449,7 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
   .section-heading { align-items: start; }
   .desktop-link { display: none; }
   .recipe-grid { grid-template-columns: 1fr; }
+  .recipe-grid.two-up { grid-template-columns: 1fr; }
   .log-explainer { grid-template-columns: 1fr; }
   .recipe-card p { min-height: 0; }
   .about-section { grid-template-columns: 1fr; gap: 54px; padding: 75px 20px; }
