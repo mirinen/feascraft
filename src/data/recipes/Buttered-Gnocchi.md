@@ -1,15 +1,16 @@
 ---
 title: The Burrow’s Buttered Gnocchi
-description: Golden pan-fried gnocchi tossed with garlic butter, sage, sweet peas and parmesan. A quick, cozy supper inspired by the Weasley family’s kitchen at the Burrow.
+image: /images/recipes/mwm4ijl4-ojqp95xv.jpeg
+description: Golden pan-fried gnocchi tossed with garlic butter, sage, sweet
+  peas and parmesan. A quick, cozy supper inspired by the Weasley family’s
+  kitchen at the Burrow.
 fandom: Harry Potter
 category: Main
-image: /images/recipes/burrows-buttered-gnocchi.png
 prepTime: 5 minutes
 cookTime: 7 minutes
 servings: 2 servings
 date: 2026-11-17
 featured: false
-published: true
 ingredients:
   - 400 g fresh gnocchi
   - 30 g butter
@@ -19,8 +20,8 @@ ingredients:
   - 6–8 sage leaves, roughly chopped
   - Salt and black pepper
   - A squeeze of lemon, optional
+published: true
 ---
-
 Somewhere between the mismatched furniture, enchanted knitting needles and the constant chaos of the Weasley household, I imagine Molly Weasley making something like this for a quick family supper.
 
 Nothing particularly fancy. Just golden gnocchi, plenty of butter, garlic, sage and parmesan. The sort of meal that comes together in one pan and disappears just as quickly.
