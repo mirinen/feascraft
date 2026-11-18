@@ -42,11 +42,9 @@ const instructions = recipe.rendered?.html ?? "";
           {data.ingredients.map((ingredient) => <li>{ingredient}</li>)}
         </ul>
       </section>
-      <section class="instructions">
-        <p class="eyebrow">The quest</p>
-        <h2>Instructions</h2>
+      <div class="instructions">
         <div class="prose" set:html={instructions} />
-      </section>
+      </div>
     </div>
   </article>
 </BaseLayout>
