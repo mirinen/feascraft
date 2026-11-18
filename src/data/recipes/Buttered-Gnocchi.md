@@ -6,7 +6,7 @@ photoX: 50
 description: Golden pan-fried gnocchi tossed with garlic butter, sage, sweet
   peas and parmesan. A quick, cozy supper inspired by the Weasley family’s
   kitchen at the Burrow.
-fandom: Harry Potter
+fandom: Wizarding World
 category: Main
 prepTime: 5 minutes
 cookTime: 7 minutes
