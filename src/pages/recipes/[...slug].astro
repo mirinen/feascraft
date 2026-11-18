@@ -15,6 +15,7 @@ const instructions = recipe.rendered?.html ?? "";
 <BaseLayout title={data.title} description={data.description}>
   <article class="recipe-page">
     <a class="back-link" href="/recipes/">← All original recipes</a>
+    <p class="print-credit">Feastcraft with Miri · feastcraftwithmiri.com</p>
     <header class="recipe-header">
       <div class="recipe-title-block">
         <div class="recipe-meta large">
@@ -28,6 +29,11 @@ const instructions = recipe.rendered?.html ?? "";
           {data.cookTime && <div><dt>Cook</dt><dd>{data.cookTime}</dd></div>}
           {data.servings && <div><dt>Makes</dt><dd>{data.servings}</dd></div>}
         </dl>
+        <div class="recipe-tools" hidden>
+          <button class="button primary" type="button" id="print-recipe">Print recipe</button>
+          <label hidden><input type="checkbox" id="keep-awake" /> Keep screen on</label>
+          <span role="status" id="screen-status"></span>
+        </div>
       </div>
       <div class="recipe-hero-image">
         {data.image ? <img src={data.image} style={{ objectPosition: data.photoX + "% " + data.photoY + "%" }} alt={data.title} /> : <span aria-hidden="true">✦</span>}
@@ -49,3 +55,84 @@ const instructions = recipe.rendered?.html ?? "";
     </div>
   </article>
 </BaseLayout>
+
+<script>
+  const tools = document.querySelector<HTMLElement>(".recipe-tools")!;
+  const toggle = document.querySelector<HTMLInputElement>("#keep-awake")!;
+  const status = document.querySelector<HTMLElement>("#screen-status")!;
+  tools.hidden = false;
+  document.querySelector("#print-recipe")!.addEventListener("click", () => window.print());
+
+  if ("wakeLock" in navigator) {
+    toggle.closest("label")!.hidden = false;
+    let lock: WakeLockSentinel | null = null;
+
+    async function keepAwake() {
+      if (toggle.disabled || lock && !lock.released || document.hidden) return;
+      toggle.disabled = true;
+      try {
+        const active = await navigator.wakeLock.request("screen");
+        lock = active;
+        active.addEventListener("release", () => {
+          if (lock !== active) return;
+          lock = null;
+          if (!document.hidden && toggle.checked) {
+            toggle.checked = false;
+            status.textContent = "Your device turned off Keep screen on.";
+          }
+        });
+      } catch {
+        if (!document.hidden) {
+          toggle.checked = false;
+          status.textContent = "Your device couldn’t keep the screen on.";
+        }
+      } finally {
+        toggle.disabled = false;
+      }
+    }
+
+    toggle.addEventListener("change", async () => {
+      status.textContent = "";
+      if (toggle.checked) await keepAwake();
+      else await lock?.release();
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (toggle.checked && !document.hidden) void keepAwake();
+    });
+  }
+</script>
+
+<style is:global>
+  .recipe-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin-top: 1.5rem; }
+  .recipe-tools[hidden], .print-credit { display: none; }
+  .recipe-tools button { font-family: inherit; cursor: pointer; }
+  .recipe-tools label { padding-block: 0.75rem; cursor: pointer; }
+  .recipe-tools input { accent-color: var(--teal); }
+
+  @media print {
+    @page { margin: 15mm; }
+    body { background: white; color: black; font: 11pt/1.3 Georgia, serif; }
+    body::before, .site-header, .site-footer, .back-link, .recipe-hero-image,
+    .recipe-meta, .recipe-tools, .recipe-page .eyebrow, .instructions > .text-link,
+    .recipe-page img, .recipe-page video, .recipe-page iframe { display: none; }
+    .recipe-page { width: auto; margin: 0; padding: 0; }
+    .print-credit { display: block; margin: 0 0 4pt; font-size: 9pt; }
+    .recipe-header, .recipe-content { display: block; }
+    .recipe-title-block h1 { margin: 0 0 6pt; font: bold 22pt/1.1 Georgia, serif; }
+    .recipe-title-block > p { max-width: none; font-size: 11pt; color: black; }
+    .recipe-facts { margin: 6pt 0; gap: 18pt; }
+    .recipe-facts div { border: 0; padding: 0; }
+    .recipe-facts dt, .recipe-facts dd { display: inline; color: black; }
+    .recipe-facts dd { margin-left: 4pt; font: bold 11pt Georgia, serif; }
+    .recipe-content { margin-top: 10pt; }
+    .ingredients-card { border: 0; padding: 0; background: none; box-shadow: none; }
+    .ingredients-card li { padding: 0; border: 0; }
+    .ingredients-card ul { padding-left: 16pt; list-style: disc; }
+    .ingredients-card li::before { content: none; }
+    .recipe-page h2, .recipe-page h3 { margin: 8pt 0 3pt; font: bold 14pt Georgia, serif; break-after: avoid; }
+    .prose { color: black; }
+    .prose p, .prose ol, .prose ul { margin: 5pt 0; }
+    .prose li { margin: 2pt 0; padding: 0; break-inside: avoid; }
+    .prose li::marker { font: inherit; color: black; }
+  }
+</style>
