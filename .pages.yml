@@ -8,7 +8,7 @@ components:
   foodPhoto:
     label: Food photo
     type: image
-    description: Tap Upload to choose a photo from your phone. To replace a photo, remove it from this field first.
+    description: Tap Upload to choose a photo. If you see error 413, make a smaller copy at feastcraftwithmiri.com/admin/#photo and upload it from Files.
   fandom:
     label: Fandom
     type: select
