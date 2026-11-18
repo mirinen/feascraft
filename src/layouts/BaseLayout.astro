@@ -49,8 +49,35 @@ const pageTitle = title === "Feastcraft with Miri" ? title : `${title} | Feastcr
       <div>
         <p class="footer-brand">Feastcraft with Miri</p>
         <p><a class="footer-email" href="mailto:hello@feastcraftwithmiri.com">hello@feastcraftwithmiri.com</a></p>
+        <ul class="social-links" aria-label="Feastcraft social profiles">
+          <li><a href="https://www.tiktok.com/@feastcraftwithmiri" rel="me">TikTok</a></li>
+          <li><a href="https://www.instagram.com/feastcraftwithmiri/" rel="me">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@feastcraftwithmiri" rel="me">YouTube</a></li>
+          <li><a href="https://www.pinterest.com/feastcraftwithmiri/" rel="me">Pinterest</a></li>
+        </ul>
       </div>
       <p>Made in Finland, usually with too many cookbooks nearby.</p>
     </footer>
   </body>
 </html>
+
+<style>
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1rem;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--gold-light);
+    text-underline-offset: 4px;
+  }
+  .social-links a:hover, .social-links a:focus-visible {
+    color: var(--paper);
+  }
+</style>
