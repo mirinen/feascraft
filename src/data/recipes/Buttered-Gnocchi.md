@@ -13,6 +13,19 @@ cookTime: 7 minutes
 servings: 2 servings
 date: 2026-11-17
 featured: false
+introduction: >-
+  Somewhere between the mismatched furniture, enchanted knitting needles and the
+  constant chaos of the Weasley household, I imagine Molly Weasley making
+  something like this for a quick family supper.
+
+
+  Nothing particularly fancy. Just golden gnocchi, plenty of butter, garlic,
+  sage and parmesan. The sort of meal that comes together in one pan and
+  disappears just as quickly.
+
+
+  And since not every evening calls for a three-hour Hogwarts feast, this one
+  takes about 12 minutes.
 ingredients:
   - 400 g fresh gnocchi
   - 30 g butter
@@ -23,12 +36,6 @@ ingredients:
   - Salt and black pepper
   - A squeeze of lemon, optional
 published: true
-introduction: |-
-  Somewhere between the mismatched furniture, enchanted knitting needles and the constant chaos of the Weasley household, I imagine Molly Weasley making something like this for a quick family supper.
-
-  Nothing particularly fancy. Just golden gnocchi, plenty of butter, garlic, sage and parmesan. The sort of meal that comes together in one pan and disappears just as quickly.
-
-  And since not every evening calls for a three-hour Hogwarts feast, this one takes about 12 minutes.
 ---
 ## Instructions
 
@@ -41,6 +48,10 @@ introduction: |-
 7. Stir in the grated parmesan until everything is coated in buttery goodness.
 8. Season with black pepper and a little salt to taste.
 9. Finish with a squeeze of lemon if you fancy a little freshness.
+
+
+
+&nbsp;
 
 ## A Little Kitchen Magic
 
