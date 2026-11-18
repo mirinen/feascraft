@@ -350,7 +350,16 @@ nav a:hover, nav a:focus-visible { color: var(--gold-light); }
 .ingredients-card h2, .instructions h2 { margin-bottom: 28px; font-size: 2.8rem; }
 .ingredients-card ul { margin: 0; padding: 0; list-style: none; }
 .ingredients-card li { position: relative; padding: 12px 0 12px 25px; border-bottom: 1px solid var(--border); }
-.ingredients-card li::before { content: "✦"; position: absolute; left: 0; color: var(--gold); font-size: 0.72rem; }
+.ingredients-card li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 0.72rem;
+  line-height: 1;
+}
 .prose { color: #4e4353; }
 .prose ol { padding-left: 23px; }
 .prose li { margin-bottom: 18px; padding-left: 8px; }
