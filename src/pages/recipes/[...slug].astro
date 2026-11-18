@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { recipeSchema } from "../../lib/recipeSchema";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -9,10 +10,12 @@ export async function getStaticPaths() {
 
 const { recipe } = Astro.props;
 const { data } = recipe;
+const schema = recipeSchema(recipe, new URL(Astro.url.pathname, Astro.site));
 const instructions = recipe.rendered?.html ?? "";
 ---
 
 <BaseLayout title={data.title} description={data.description}>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g, "\\u003c")} />
   <article class="recipe-page">
     <a class="back-link" href="/recipes/">← All original recipes</a>
     <p class="print-credit">Feastcraft with Miri · feastcraftwithmiri.com</p>
