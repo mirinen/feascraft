@@ -1,7 +1,7 @@
 ---
 title: Orc-draught
 description: A green drink from Middle-earth that looks exactly as suspicious as the name suggests.
-fandom: Middle-earth
+fandom: World of Tolkien
 category: Cookbook drink
 date: 2026-11-17
 published: true
