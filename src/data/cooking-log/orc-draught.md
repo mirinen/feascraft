@@ -5,7 +5,7 @@ photoX: 50
 description: A Middle-earth-inspired drink from Recipes from the World of
   Tolkien, with a little Finnish twist. Perfect for chilly, dark autumn
   evenings.
-fandom: Harry Potter
+fandom: World of Tolkien
 category: Cookbook drink
 date: 2026-10-24
 cookbook: Recipes from the World of Tolkien
