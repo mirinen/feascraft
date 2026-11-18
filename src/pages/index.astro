@@ -1,21 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getCookingEntries } from "../lib/cookingEntries";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RecipeCard from "../components/RecipeCard.astro";
 
-const [recipes, logPosts] = await Promise.all([
-  getCollection("recipes", ({ data }) => data.published),
-  getCollection("cookingLog", ({ data }) => data.published),
-]);
-const latestEntries = [...recipes, ...logPosts]
-  .map((post) => ({
-    slug: post.id,
-    ...post.data,
-    href: `/${post.collection === "recipes" ? "recipes" : "cooking-log"}/${post.id}/`,
-    linkLabel: post.collection === "recipes" ? "View recipe" : "Read post",
-  }))
-  .sort((a, b) => b.date.valueOf() - a.date.valueOf())
-  .slice(0, 3);
+const latestEntries = (await getCookingEntries()).slice(0, 3);
 ---
 
 <BaseLayout>

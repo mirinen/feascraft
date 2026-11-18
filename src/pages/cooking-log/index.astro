@@ -1,27 +1,18 @@
 ---
-import { getCollection } from "astro:content";
+import { getCookingEntries } from "../../lib/cookingEntries";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import RecipeCard from "../../components/RecipeCard.astro";
 
-const posts = await getCollection("cookingLog", ({ data }) => data.published);
-
-const entries = posts
-  .map((post) => ({
-    slug: post.id,
-    ...post.data,
-    href: `/cooking-log/${post.id}/`,
-    linkLabel: "Read the cooking log",
-  }))
-  .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+const entries = await getCookingEntries();
 
 const fandoms = ["All", ...new Set(entries.map((entry) => entry.fandom))];
 ---
 
-<BaseLayout title="Cooking Log" description="Cookbook dishes and cooking notes from the Feastcraft kitchen.">
+<BaseLayout title="Cooking Log" description="Original recipes and notes from cooking through my fantasy cookbooks.">
   <section class="page-hero compact">
     <p class="eyebrow">From the Feastcraft kitchen</p>
     <h1>Cooking log</h1>
-    <p>The cookbook dishes I have made, what I changed and what I thought of them.</p>
+    <p>Everything I’ve been cooking, from dishes I found in my cookbooks to recipes of my own.</p>
   </section>
 
   <section class="section collection-section">
