@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const collections = "https://app.pagescms.org/mirinen/feascraft/main/collection";
+---
+
+<BaseLayout title="Feastcraft editor" description="Edit recipes and cooking notes for Feastcraft with Miri.">
+  <meta slot="head" name="robots" content="noindex" />
+  <section class="page-hero compact editor">
+    <h1>Feastcraft editor</h1>
+    <p>Choose a collection. Pages CMS will ask you to sign in with GitHub.</p>
+    <div class="editor-links">
+      <a class="button primary" href={collections + "/recipes"}>Original Recipes</a>
+      <a class="button secondary" href={collections + "/cooking-log"}>Cooking Log</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .editor { min-height: 60vh; }
+  .editor-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+  @media (max-width: 480px) {
+    .editor-links { flex-direction: column; }
+  }
+</style>

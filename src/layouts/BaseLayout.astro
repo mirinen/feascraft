@@ -23,6 +23,7 @@ const pageTitle = title === "Feastcraft with Miri" ? title : `${title} | Feastcr
     <meta name="theme-color" content="#21152f" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{pageTitle}</title>
+    <slot name="head" />
   </head>
   <body>
     <header class="site-header">
@@ -48,6 +49,7 @@ const pageTitle = title === "Feastcraft with Miri" ? title : `${title} | Feastcr
       <div>
         <p class="footer-brand">Feastcraft with Miri</p>
         <p><a class="footer-email" href="mailto:hello@feastcraftwithmiri.com">hello@feastcraftwithmiri.com</a></p>
+        <p><a href="/admin/">Editor login</a></p>
       </div>
       <p>Made in Finland, usually with too many cookbooks nearby.</p>
     </footer>

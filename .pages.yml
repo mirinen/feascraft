@@ -1,55 +1,71 @@
 media:
   input: public/images/recipes
   output: /images/recipes
-  rename: safe
-  categories: [image]
+  rename: random
+  extensions: [jpg, jpeg, png, webp, avif, gif]
+
+components:
+  foodPhoto:
+    label: Food photo
+    type: image
+    description: Tap Upload to choose a photo from your phone. To replace a photo, remove it from this field first.
+  fandom:
+    label: Fandom
+    type: select
+    required: true
+    options:
+      values:
+        - World of Warcraft
+        - Middle-earth
+        - Harry Potter
+        - Dota 2
+        - Star Wars
+        - Hearthstone
+        - The Witcher
+        - Game of Thrones
+        - Moomins
+        - Jurassic World
+        - The Elder Scrolls
+        - Original fantasy
+  published:
+    label: Published
+    type: boolean
+    default: false
+    description: Turn on and save when you're ready to put this on Feastcraft.
 
 content:
   - name: recipes
-    label: Recipes
+    label: Original Recipes
     type: collection
     path: src/data/recipes
     format: yaml-frontmatter
     filename: "{primary}.md"
     view:
       primary: title
-      fields: [fandom, published, featured]
-      sort: date
-      order: desc
+      fields: [title, date, published]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
     fields:
       - name: title
         label: Recipe name
         type: string
         required: true
+      - name: image
+        component: foodPhoto
       - name: description
         label: Short description
         type: text
         required: true
       - name: fandom
-        label: Fandom
-        type: select
-        required: true
-        options:
-          values:
-            - name: World of Warcraft
-              label: World of Warcraft
-            - name: Dota 2
-              label: Dota 2
-            - name: Middle-earth
-              label: Middle-earth
-            - name: Star Wars
-              label: Star Wars
-            - name: Original fantasy
-              label: Original fantasy
+        component: fandom
       - name: category
         label: Category
         type: select
         required: true
         options:
           values: [Main, Snack, Baking, Dessert, Drink]
-      - name: image
-        label: Food photo
-        type: image
       - name: prepTime
         label: Preparation time
         type: string
@@ -64,11 +80,7 @@ content:
         type: date
         required: true
       - name: featured
-        label: Featured on homepage
-        type: boolean
-        default: false
-      - name: published
-        label: Published
+        hidden: true
         type: boolean
         default: false
       - name: ingredients
@@ -80,3 +92,64 @@ content:
         label: Instructions
         type: rich-text
         required: true
+      - name: published
+        component: published
+
+  - name: cooking-log
+    label: Cooking Log
+    type: collection
+    path: src/data/cooking-log
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, date, published]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Dish name
+        type: string
+        required: true
+      - name: image
+        component: foodPhoto
+      - name: description
+        label: Short description
+        type: text
+        required: true
+      - name: fandom
+        component: fandom
+      - name: category
+        label: Category
+        type: select
+        required: true
+        default: Cookbook dish
+        options:
+          values: [Cookbook dish, Cookbook drink]
+      - name: date
+        label: Date cooked
+        type: date
+        required: true
+      - name: cookbook
+        label: Cookbook title
+        type: string
+      - name: cookbookUrl
+        label: Amazon cookbook link
+        type: string
+        pattern:
+          regex: '^(https?://[^\s/]+[^\s]*)?$'
+          message: Enter a full web address, including https://.
+      - name: videoUrl
+        label: Video link
+        type: string
+        pattern:
+          regex: '^(https?://[^\s/]+[^\s]*)?$'
+          message: Enter a full web address, including https://.
+      - name: body
+        label: Cooking notes
+        type: rich-text
+        required: true
+      - name: published
+        component: published
