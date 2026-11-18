@@ -44,6 +44,7 @@ const instructions = recipe.rendered?.html ?? "";
       </section>
       <div class="instructions">
         <div class="prose" set:html={instructions} />
+        {data.videoUrl && <a class="text-link" href={data.videoUrl} rel="noreferrer">Watch the video →</a>}
       </div>
     </div>
   </article>

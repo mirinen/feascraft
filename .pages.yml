@@ -93,6 +93,12 @@ content:
         label: Publication date
         type: date
         required: true
+      - name: videoUrl
+        label: Video link
+        type: string
+        pattern:
+          regex: '^(https?://[^\s/]+[^\s]*)?$'
+          message: Enter a full web address, including https://.
       - name: featured
         hidden: true
         type: boolean
@@ -175,3 +181,17 @@ content:
         required: true
       - name: published
         component: published
+
+  - name: newsletter
+    label: Newsletter
+    type: file
+    path: src/data/newsletter.json
+    format: json
+    fields:
+      - name: signupUrl
+        label: Newsletter signup page
+        type: string
+        description: Paste the link from your email service to show the signup on the homepage.
+        pattern:
+          regex: '^(https://[^\s/]+[^\s]*)?$'
+          message: Enter the full signup link, starting with https://.

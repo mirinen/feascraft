@@ -18,6 +18,7 @@ const recipes = defineCollection({
     date: z.coerce.date(),
     featured: z.boolean().default(false),
     published: z.boolean().default(false),
+    videoUrl: z.url().optional(),
     ingredients: z.array(z.string()),
   }),
 });
