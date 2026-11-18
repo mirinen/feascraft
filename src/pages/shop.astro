@@ -30,7 +30,7 @@ const books = [
     <h1>The cookbooks I use</h1>
     <p>These are the cookbooks I use for the recipes you see on Feastcraft.</p>
     <p class="affiliate-note shop-disclosure">
-      Affiliate links: Amazon. As an Amazon Associate I earn from qualifying purchases.
+      As an Amazon Associate I earn from qualifying purchases.
     </p>
   </section>
 
@@ -46,8 +46,7 @@ const books = [
             <p class="eyebrow">{book.world}</p>
             <h2>{book.title}</h2>
             <p>by {book.author}</p>
-            <p class="affiliate-label">Affiliate link: Amazon</p>
-            <a class="button primary" href={book.url} rel="sponsored noreferrer">View on Amazon</a>
+            <a class="button primary" href={book.url} rel="sponsored noreferrer">View on Amazon (paid link)</a>
           </div>
         </article>
       ))}
@@ -58,9 +57,8 @@ const books = [
         <p class="eyebrow">Everything in one place</p>
         <h2>My Amazon storefront</h2>
         <p>The cookbooks and other things I recommend are collected on my storefront.</p>
-        <p class="affiliate-label">Affiliate link: Amazon</p>
       </div>
-      <a class="button secondary" href={storefrontUrl} rel="sponsored noreferrer">Open the storefront</a>
+      <a class="button secondary" href={storefrontUrl} rel="sponsored noreferrer">My Amazon storefront (paid link)</a>
     </aside>
   </section>
 </BaseLayout>

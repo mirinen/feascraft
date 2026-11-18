@@ -42,10 +42,7 @@ const formattedDate = data.date.toLocaleDateString("en-GB", {
             <h2>{data.cookbook}</h2>
             <p>This post is about my experience making the dish. The full recipe belongs to the cookbook.</p>
             {data.cookbookUrl && (
-              <>
-                <p class="affiliate-label">Affiliate link: Amazon</p>
-                <a class="button primary" href={data.cookbookUrl} rel="sponsored noreferrer">View the cookbook</a>
-              </>
+              <a class="button primary" href={data.cookbookUrl} rel="sponsored noreferrer">View on Amazon (paid link)</a>
             )}
           </aside>
         )}
