@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 const { recipe } = Astro.props;
 const { data } = recipe;
 const schema = recipeSchema(recipe, new URL(Astro.url.pathname, Astro.site));
+const introParagraphs = data.introduction?.trim().split(/\n\s*\n/).filter(Boolean) ?? [];
 const instructions = recipe.rendered?.html ?? "";
 ---
 
@@ -44,8 +45,12 @@ const instructions = recipe.rendered?.html ?? "";
     </header>
 
     <div class="recipe-content">
+      {introParagraphs.length > 0 && (
+        <div class="recipe-intro prose">
+          {introParagraphs.map(paragraph => <p>{paragraph}</p>)}
+        </div>
+      )}
       <section class="ingredients-card">
-        <p class="eyebrow">Gather your supplies</p>
         <h2>Ingredients</h2>
         <ul>
           {data.ingredients.map((ingredient) => <li>{ingredient}</li>)}
@@ -111,6 +116,21 @@ const instructions = recipe.rendered?.html ?? "";
   .recipe-tools button { font-family: inherit; cursor: pointer; }
   .recipe-tools label { padding-block: 0.75rem; cursor: pointer; }
   .recipe-tools input { accent-color: var(--teal); }
+
+  @media screen {
+    .recipe-content { row-gap: clamp(24px, 4vw, 48px); }
+    .recipe-intro {
+      grid-column: 1 / -1;
+      padding: clamp(22px, 3vw, 35px);
+      border: 1px solid var(--border);
+      background: var(--paper);
+    }
+    .recipe-intro p { max-width: 80ch; margin: 0 auto 1em; }
+    .recipe-intro p:last-child { margin-bottom: 0; }
+  }
+  @media screen and (min-width: 901px) {
+    .instructions { padding-top: 36px; } /* Align with the ingredients card's padding and border. */
+  }
 
   @media print {
     @page { margin: 15mm; }

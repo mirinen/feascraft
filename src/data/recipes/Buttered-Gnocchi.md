@@ -23,13 +23,13 @@ ingredients:
   - Salt and black pepper
   - A squeeze of lemon, optional
 published: true
+introduction: |-
+  Somewhere between the mismatched furniture, enchanted knitting needles and the constant chaos of the Weasley household, I imagine Molly Weasley making something like this for a quick family supper.
+
+  Nothing particularly fancy. Just golden gnocchi, plenty of butter, garlic, sage and parmesan. The sort of meal that comes together in one pan and disappears just as quickly.
+
+  And since not every evening calls for a three-hour Hogwarts feast, this one takes about 12 minutes.
 ---
-Somewhere between the mismatched furniture, enchanted knitting needles and the constant chaos of the Weasley household, I imagine Molly Weasley making something like this for a quick family supper.
-
-Nothing particularly fancy. Just golden gnocchi, plenty of butter, garlic, sage and parmesan. The sort of meal that comes together in one pan and disappears just as quickly.
-
-And since not every evening calls for a three-hour Hogwarts feast, this one takes about 12 minutes.
-
 ## Instructions
 
 1. Melt half the butter in a large frying pan over medium heat.

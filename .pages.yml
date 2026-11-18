@@ -103,6 +103,10 @@ content:
         hidden: true
         type: boolean
         default: false
+      - name: introduction
+        label: Recipe introduction
+        type: text
+        description: Appears above the ingredients and instructions. Leave a blank line between paragraphs.
       - name: ingredients
         label: Ingredients
         type: string
