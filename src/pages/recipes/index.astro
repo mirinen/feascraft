@@ -31,6 +31,8 @@ const fandoms = ["All", ...new Set(recipes.map(({ data }) => data.fandom))];
             fandom={recipe.data.fandom}
             category={recipe.data.category}
             image={recipe.data.image}
+            photoX={recipe.data.photoX}
+            photoY={recipe.data.photoY}
           />
         </div>
       ))}

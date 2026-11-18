@@ -32,7 +32,7 @@ const formattedDate = data.date.toLocaleDateString("en-GB", {
 
     <div class="log-layout">
       <div class="log-hero-image">
-        {data.image ? <img src={data.image} alt={data.title} /> : <span aria-hidden="true">✦</span>}
+        {data.image ? <img src={data.image} style={{ objectPosition: data.photoX + "% " + data.photoY + "%" }} alt={data.title} /> : <span aria-hidden="true">✦</span>}
       </div>
 
       <div class="log-body">

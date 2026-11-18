@@ -6,6 +6,8 @@ interface Props {
   fandom: string;
   category: string;
   image?: string;
+  photoX?: number;
+  photoY?: number;
   href?: string;
   linkLabel?: string;
 }
@@ -17,6 +19,8 @@ const {
   fandom,
   category,
   image,
+  photoX = 50,
+  photoY = 50,
   href = `/recipes/${slug}/`,
   linkLabel = "View full recipe",
 } = Astro.props;
@@ -24,7 +28,7 @@ const {
 
 <article class="recipe-card">
   <a class="recipe-image" href={href} aria-label={`Open ${title}`}>
-    {image ? <img src={image} alt={title} loading="lazy" /> : <span aria-hidden="true">✦</span>}
+    {image ? <img src={image} style={{ objectPosition: photoX + "% " + photoY + "%" }} alt={title} loading="lazy" /> : <span aria-hidden="true">✦</span>}
   </a>
   <div class="recipe-card-copy">
     <div class="recipe-meta">

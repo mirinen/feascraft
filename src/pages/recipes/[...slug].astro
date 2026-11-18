@@ -30,7 +30,7 @@ const instructions = recipe.rendered?.html ?? "";
         </dl>
       </div>
       <div class="recipe-hero-image">
-        {data.image ? <img src={data.image} alt={data.title} /> : <span aria-hidden="true">✦</span>}
+        {data.image ? <img src={data.image} style={{ objectPosition: data.photoX + "% " + data.photoY + "%" }} alt={data.title} /> : <span aria-hidden="true">✦</span>}
       </div>
     </header>
 

@@ -9,6 +9,12 @@ components:
     label: Food photo
     type: image
     description: Tap Upload to choose a photo. If you see error 413, make a smaller copy at feastcraftwithmiri.com/admin/#photo and upload it from Files.
+  photoAxis:
+    type: number
+    default: 50
+    options:
+      min: 0
+      max: 100
   fandom:
     label: Fandom
     type: select
@@ -54,6 +60,14 @@ content:
         required: true
       - name: image
         component: foodPhoto
+      - name: photoY
+        component: photoAxis
+        label: Vertical photo position
+        description: 0 shows the top, 50 the middle and 100 the bottom.
+      - name: photoX
+        component: photoAxis
+        label: Horizontal photo position
+        description: 0 shows the left, 50 the middle and 100 the right.
       - name: description
         label: Short description
         type: text
@@ -115,6 +129,14 @@ content:
         required: true
       - name: image
         component: foodPhoto
+      - name: photoY
+        component: photoAxis
+        label: Vertical photo position
+        description: 0 shows the top, 50 the middle and 100 the bottom.
+      - name: photoX
+        component: photoAxis
+        label: Horizontal photo position
+        description: 0 shows the left, 50 the middle and 100 the right.
       - name: description
         label: Short description
         type: text

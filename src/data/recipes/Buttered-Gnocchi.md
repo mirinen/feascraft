@@ -1,5 +1,6 @@
 ---
 title: The Burrow’s Buttered Gnocchi
+photoY: 80
 image: /images/recipes/mwm4ijl4-ojqp95xv.jpeg
 description: Golden pan-fried gnocchi tossed with garlic butter, sage, sweet
   peas and parmesan. A quick, cozy supper inspired by the Weasley family’s
