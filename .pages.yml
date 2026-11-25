@@ -8,7 +8,7 @@ components:
   foodPhoto:
     label: Food photo
     type: image
-    description: Tap Upload to choose a photo. If you see error 413, make a smaller copy at feastcraftwithmiri.com/admin/#photo and upload it from Files.
+    description: Choose a photo for the cover.
   photoAxis:
     type: number
     default: 50

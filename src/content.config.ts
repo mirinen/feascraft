@@ -2,6 +2,12 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+const gallery = z.array(z.object({
+  src: z.string().min(1),
+  alt: z.string().min(1),
+  caption: z.string().optional(),
+})).default([]);
+
 const recipes = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/recipes" }),
   schema: z.object({
@@ -10,6 +16,7 @@ const recipes = defineCollection({
     fandom: z.string(),
     category: z.string(),
     image: z.string().optional(),
+    gallery,
     photoX: z.number().min(0).max(100).default(50),
     photoY: z.number().min(0).max(100).default(50),
     prepTime: z.string().optional(),
@@ -32,6 +39,7 @@ const cookingLog = defineCollection({
     fandom: z.string(),
     category: z.string(),
     image: z.string().optional(),
+    gallery,
     photoX: z.number().min(0).max(100).default(50),
     photoY: z.number().min(0).max(100).default(50),
     date: z.coerce.date(),

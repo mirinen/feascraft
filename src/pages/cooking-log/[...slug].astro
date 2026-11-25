@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import PhotoGallery from "../../components/PhotoGallery.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -54,5 +55,6 @@ const formattedDate = data.date.toLocaleDateString("en-GB", {
         )}
       </div>
     </div>
+    <PhotoGallery photos={data.gallery} />
   </article>
 </BaseLayout>
